@@ -1,0 +1,22 @@
+{
+  "user": [
+    {
+      "Name": "Vinayak",
+      "LastName": "Deulkar",
+      "UserName": "vinayakdeulkar",
+      "Email": "vinayakdeulkar@gmail.com",
+      "Password": "1234",
+      "ConfirmPassword": "1234",
+      "id": 1
+    },
+    {
+      "Name": "Sumit",
+      "LastName": "Joshi",
+      "UserName": "emperorrock28",
+      "Email": "vinayakdeulkar@gmail.com",
+      "Password": "121",
+      "ConfirmPassword": "121",
+      "id": 2
+    }
+  ]
+}
