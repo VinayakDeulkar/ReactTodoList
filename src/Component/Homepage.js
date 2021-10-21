@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
-import {  Col,  Row, Table } from 'react-bootstrap'
-import { useHistory } from 'react-router';
+import {  Col,  Row } from 'react-bootstrap'
+import { Route, useHistory } from 'react-router';
 import TodoForm from './TodoForm';
 import TodoTable from './TodoTable';
 
@@ -9,7 +9,7 @@ export default function Homepage() {
     useEffect(() => {
         
         let arr=JSON.parse(localStorage.getItem('userdata'))
-        if(arr==undefined){
+        if(arr===undefined){
             history.push("/")
         }
         
@@ -20,8 +20,9 @@ export default function Homepage() {
                 <Col lg={3}>
                 </Col>
                 <Col lg={6} className=" mt-5">
-                    <TodoForm/>
-                    <TodoTable/>
+                    <Route path="/Homepage" exact component={TodoForm}/>
+                    <Route path="/Homepage" exact component={TodoTable}/>
+                    
                 </Col>
             </Row>
         </div>

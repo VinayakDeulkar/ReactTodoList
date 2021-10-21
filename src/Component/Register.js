@@ -68,7 +68,12 @@ export default function Register() {
         const formdata={Name:fname.current.value,LastName:lastname.current.value,UserName:username.current.value,Email:email.current.value,Password:password.current.value,ConfirmPassword:confirmpassword.current.value}
         console.log(formdata);
         client.post("/",formdata)
-        history.push("/")
+        if(state===""){
+            history.push("/")
+        }
+        else{
+            history.push("/Register")
+        }
     }
     return (
         <div>
