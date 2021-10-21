@@ -9,19 +9,43 @@ export default function TodoTable() {
     useEffect(() => {
         let arr=[]
         arr=JSON.parse(localStorage.getItem('mylist'))
-        let stor=arr.sort((a,b)=>b.level-a.level);
+        if(arr!=undefined){
+            let stor=arr.sort((a,b)=>b.level-a.level);
         console.log(stor);
+        console.log(arr);
         setTodoList({
             List:arr
         })
+        }
+        
         
         console.log(TodoList);
         
     },[])
     const completeitem=(key)=>{
-        
-        console.log(keys.includes(key));
-        if(keys.includes(key)!=true){
+        if(keys!=null){
+            if(keys.includes(key)!=true){
+                setStyle({
+                    styleid:key,
+                    styleclass:"cont2"
+                })
+                complete.push(key)
+                localStorage.setItem('keys',JSON.stringify(complete))
+            }
+            else{
+                setStyle({
+                styleid:key,
+                styleclass:""
+                })
+                let carr=[]
+                carr=complete.filter(ele=>ele!=key)
+                console.log(carr);
+                setcomplete(carr)
+                localStorage.setItem('keys',JSON.stringify(carr))
+                console.log(complete);
+            }
+        }
+        else{
             setStyle({
                 styleid:key,
                 styleclass:"cont2"
@@ -29,18 +53,7 @@ export default function TodoTable() {
             complete.push(key)
             localStorage.setItem('keys',JSON.stringify(complete))
         }
-        else{
-            setStyle({
-            styleid:key,
-            styleclass:""
-            })
-            let carr=[]
-            carr=complete.filter(ele=>ele!=key)
-            console.log(carr);
-            setcomplete(carr)
-            localStorage.setItem('keys',JSON.stringify(carr))
-            console.log(complete);
-        }
+        
     }
     const deleteItem=(key)=>{
         console.log(key);
@@ -64,9 +77,9 @@ export default function TodoTable() {
                 </thead>
                 
                     {TodoList.List.map((element)=>
-                    <tbody key={element.id+element.task+element.level}>
+                    <tbody key={element.id}>
                         <tr>
-                        <td><label className={element.id===Style.styleid || keys.includes(element.id) ? Style.styleclass: ''}>{element.task}</label></td>
+                        <td><label className={element.id===Style.styleid || complete.includes(Style.styleid) ? Style.styleclass: ''}>{element.task}</label></td>
                         <td><label>{element.level}</label></td>
                         <td>
                             <Button variant="outline-success" onClick={()=>completeitem(element.id)} ><i className="fa fa-check" aria-hidden="true"></i></Button>{' '}

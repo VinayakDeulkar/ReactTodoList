@@ -1,5 +1,5 @@
 import React,{useRef,useState} from 'react'
-import { Form, Row ,Col,Button} from 'react-bootstrap';
+import { Form, Row ,Col,Button, Card} from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
@@ -80,7 +80,9 @@ export default function Register() {
             <Row className="mt-4">
                
                 <Col lg={4}></Col>
-                <Col lg={4}><h2>Registration Form</h2>
+                <Col lg={4}>
+                    <Card className="p-5">
+                    <h2>Registration Form</h2>
                     <Form onSubmit={adddata}>
                     <Form.Group >
                                 <Form.Label>Name</Form.Label>
@@ -116,12 +118,11 @@ export default function Register() {
                                 Submit
                             </Button>
                     </Form>
+                    <label>Already Register? <Link to="/">Click Here</Link></label>
+                    </Card>
                 </Col>
             </Row>
-            <Row>
-                    <Col lg={4}></Col>
-                    <Col lg={4}><label>Already Register? <Link to="/">Click Here</Link></label></Col>
-                </Row>
+            
         </div>
     )
 }

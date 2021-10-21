@@ -6,6 +6,7 @@ import  Button  from 'react-bootstrap/Button'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router';
+import { Card } from 'react-bootstrap'
 const client=axios.create({
     baseURL:"http://localhost:3001/user"
 })
@@ -51,6 +52,7 @@ export default function Login() {
                 <Row className="mt-5">
                     <Col lg={4}></Col>
                     <Col lg={4}>
+                        <Card className="p-5">
                         <h3>Login Page</h3>
                         <Form  >
                             <Form.Group controlId="formBasicEmail">
@@ -70,12 +72,13 @@ export default function Login() {
                                 Login
                             </Button>
                             </Form>
+                            <label>Don't have account. <Link to="/Register">Create One</Link></label>
+                            </Card>
                         </Col>
                 </Row>
-                <Row>
-                    <Col lg={4}></Col>
-                    <Col lg={4}><label>Don't have account. <Link to="/Register">Create One</Link></label></Col>
-                </Row>
+                
+                    
+                
         </div>
     )
 }
