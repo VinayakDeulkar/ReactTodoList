@@ -4,7 +4,8 @@ import { Button, Table } from 'react-bootstrap'
 export default function TodoTable() {
     const [TodoList, setTodoList] = useState({List:[]})
     const [Style, setStyle] = useState({styleid:'',styleclass:""})
-    const [complete, setcomplete] = useState({clist:[]})
+    const [complete, setcomplete] = useState([])
+    let keys=JSON.parse(localStorage.getItem('keys'))
     useEffect(() => {
         let arr=[]
         arr=JSON.parse(localStorage.getItem('mylist'))
@@ -14,32 +15,36 @@ export default function TodoTable() {
             List:arr
         })
         
+        console.log(TodoList);
         
     },[])
     const completeitem=(key)=>{
-        console.log(key);
-        console.log(complete.clist.includes(key));
-        if(complete.clist.includes(key)!=true){
-            
-        setStyle({
-            styleid:key,
-            styleclass:"cont2"
-        })
-        complete.clist.push(key)}
+        
+        console.log(keys.includes(key));
+        if(keys.includes(key)!=true){
+            setStyle({
+                styleid:key,
+                styleclass:"cont2"
+            })
+            complete.push(key)
+            localStorage.setItem('keys',JSON.stringify(complete))
+        }
         else{
             setStyle({
             styleid:key,
             styleclass:""
-        })
-        let carr=[]
-        carr=complete.clist.filter(ele=>ele.id===key)
-        setcomplete({
-            clist:carr
-        })
-    }
+            })
+            let carr=[]
+            carr=complete.filter(ele=>ele!=key)
+            console.log(carr);
+            setcomplete(carr)
+            localStorage.setItem('keys',JSON.stringify(carr))
+            console.log(complete);
+        }
     }
     const deleteItem=(key)=>{
         console.log(key);
+        console.log(TodoList.List);
         let arr=TodoList.List.filter(todo=>todo.id!==key)
         console.log(arr);
         localStorage.setItem('mylist',JSON.stringify(arr))
@@ -61,7 +66,7 @@ export default function TodoTable() {
                     {TodoList.List.map((element)=>
                     <tbody key={element.id+element.task+element.level}>
                         <tr>
-                        <td><label className={element.id===Style.styleid || complete.clist.includes(element.id) ? Style.styleclass: ''}>{element.task}</label></td>
+                        <td><label className={element.id===Style.styleid || keys.includes(element.id) ? Style.styleclass: ''}>{element.task}</label></td>
                         <td><label>{element.level}</label></td>
                         <td>
                             <Button variant="outline-success" onClick={()=>completeitem(element.id)} ><i className="fa fa-check" aria-hidden="true"></i></Button>{' '}
