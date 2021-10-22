@@ -17,6 +17,15 @@
       "Password": "121",
       "ConfirmPassword": "121",
       "id": 2
+    },
+    {
+      "Name": "Kiran",
+      "LastName": "Gore",
+      "UserName": "Kirangore",
+      "Email": "Kiran@gmail.com",
+      "Password": "Vinayak@123",
+      "ConfirmPassword": "Vinayak@123",
+      "id": 3
     }
   ]
 }

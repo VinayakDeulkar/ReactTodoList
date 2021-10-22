@@ -7,7 +7,7 @@ import Homepage from "./Component/Homepage";
 
 function App() {
   return (
-    <div>
+    <div >
       <Router>
         <Switch>
           <Route path="/Register" exact component={Register}/>

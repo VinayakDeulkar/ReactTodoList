@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import {  Col,    Row } from 'react-bootstrap'
+import {  Card, Col,    Row } from 'react-bootstrap'
 import { Route, useHistory } from 'react-router';
 import Navs from './Navs';
 import TodoForm from './TodoForm';
@@ -23,13 +23,17 @@ export default function Homepage() {
                 </Col>
             </Row>
             <Row>
+                
                 <Col lg={3}>
                 </Col>
+                
                 <Col lg={6} className=" mt-5">
+                    <Card className="p-3">
                     <Route path="/Homepage" exact component={TodoForm}/>
                     <Route path="/Homepage" exact component={TodoTable}/>
-                    
+                    </Card>
                 </Col>
+                
             </Row>
         </div>
     )

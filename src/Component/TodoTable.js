@@ -3,19 +3,17 @@ import { Button, Table } from 'react-bootstrap'
 
 export default function TodoTable() {
     const [TodoList, setTodoList] = useState({List:[]})
-    const [Style, setStyle] = useState({styleid:'',styleclass:""})
-    const [complete, setcomplete] = useState([])
-    let keys=JSON.parse(localStorage.getItem('keys'))
     useEffect(() => {
         let arr=[]
         arr=JSON.parse(localStorage.getItem('mylist'))
+        
         if(arr!=undefined){
             let stor=arr.sort((a,b)=>b.level-a.level);
-        console.log(stor);
-        console.log(arr);
-        setTodoList({
-            List:arr
-        })
+            console.log(stor);
+            console.log(arr);
+            setTodoList({
+                List:arr
+            })
         }
         
         
@@ -23,36 +21,25 @@ export default function TodoTable() {
         
     },[])
     const completeitem=(key)=>{
-        if(keys!=null){
-            if(keys.includes(key)!=true){
-                setStyle({
-                    styleid:key,
-                    styleclass:"cont2"
-                })
-                complete.push(key)
-                localStorage.setItem('keys',JSON.stringify(complete))
+        console.log(key);
+        console.log(TodoList.List);
+        TodoList.List.map((element)=>{
+            if(element.id==key){
+                console.log(element.id);
+                if(element.status===false){
+                    element.status=true
+                }
+                else{
+                    element.status=false
+                }
             }
-            else{
-                setStyle({
-                styleid:key,
-                styleclass:""
-                })
-                let carr=[]
-                carr=complete.filter(ele=>ele!=key)
-                console.log(carr);
-                setcomplete(carr)
-                localStorage.setItem('keys',JSON.stringify(carr))
-                console.log(complete);
-            }
-        }
-        else{
-            setStyle({
-                styleid:key,
-                styleclass:"cont2"
-            })
-            complete.push(key)
-            localStorage.setItem('keys',JSON.stringify(complete))
-        }
+         } )
+         localStorage.setItem('mylist',JSON.stringify(TodoList.List))
+         let arr=[]
+         arr=JSON.parse(localStorage.getItem('mylist'))
+         setTodoList({
+            List:arr
+        })
         
     }
     const deleteItem=(key)=>{
@@ -79,7 +66,7 @@ export default function TodoTable() {
                     {TodoList.List.map((element)=>
                     <tbody key={element.id}>
                         <tr>
-                        <td><label className={element.id===Style.styleid || complete.includes(Style.styleid) ? Style.styleclass: ''}>{element.task}</label></td>
+                        <td><label className={element.status?"cont":"cont2"}>{element.task}</label></td>
                         <td><label>{element.level}</label></td>
                         <td>
                             <Button variant="outline-success" onClick={()=>completeitem(element.id)} ><i className="fa fa-check" aria-hidden="true"></i></Button>{' '}

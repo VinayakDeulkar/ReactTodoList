@@ -68,7 +68,7 @@ export default function Register() {
         const formdata={Name:fname.current.value,LastName:lastname.current.value,UserName:username.current.value,Email:email.current.value,Password:password.current.value,ConfirmPassword:confirmpassword.current.value}
         console.log(formdata);
         client.post("/",formdata)
-        if(state===""){
+        if(state!==""){
             history.push("/")
         }
         else{
@@ -81,7 +81,7 @@ export default function Register() {
                
                 <Col lg={4}></Col>
                 <Col lg={4}>
-                    <Card className="p-5">
+                    <Card className="p-5 text-white "style={{backgroundImage:`url("/Images/images.jfif")`}}>
                     <h2>Registration Form</h2>
                     <Form onSubmit={adddata}>
                     <Form.Group >
@@ -118,7 +118,7 @@ export default function Register() {
                                 Submit
                             </Button>
                     </Form>
-                    <label>Already Register? <Link to="/">Click Here</Link></label>
+                    <label>Already Register? <Link to="/" className="text-white">Click Here</Link></label>
                     </Card>
                 </Col>
             </Row>

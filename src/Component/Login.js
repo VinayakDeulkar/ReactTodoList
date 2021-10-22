@@ -47,12 +47,12 @@ export default function Login() {
         
     }
     return (
-        <div>
+        <div >
                 
                 <Row className="mt-5">
                     <Col lg={4}></Col>
                     <Col lg={4}>
-                        <Card className="p-5">
+                        <Card className="p-5  text-white"style={{backgroundImage:`url("/Images/images.jfif")`}}>
                         <h3>Login Page</h3>
                         <Form  >
                             <Form.Group controlId="formBasicEmail">
@@ -72,7 +72,7 @@ export default function Login() {
                                 Login
                             </Button>
                             </Form>
-                            <label>Don't have account. <Link to="/Register">Create One</Link></label>
+                            <label>Don't have account. <Link to="/Register" className="text-white">Create One</Link></label>
                             </Card>
                         </Col>
                 </Row>

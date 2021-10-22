@@ -30,6 +30,10 @@
 .cont2{
   text-decoration: line-through;
 }
+.cont{
+  text-decoration: none;
+}
+
 
 @keyframes App-logo-spin {
   from {

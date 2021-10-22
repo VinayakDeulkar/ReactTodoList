@@ -20,7 +20,7 @@ export default function TodoForm() {
                 let iddata=Math.random()
                 let itemdata=item.current.value;
                 let prioritydata=priority.current.value;
-                let data={'id':iddata,'task':itemdata,'level':prioritydata}
+                let data={'id':iddata,'task':itemdata,'level':prioritydata,'status':true}
                 console.log(data);
                 let arr=[]
                 arr=JSON.parse(localStorage.getItem('mylist'))
@@ -39,7 +39,7 @@ export default function TodoForm() {
             let iddata=Math.random()
             let itemdata=item.current.value;
             let prioritydata=priority.current.value;
-            let data={'id':iddata,'task':itemdata,'level':prioritydata}
+            let data={'id':iddata,'task':itemdata,'level':prioritydata,'status':true}
             arr.push(data)
             localStorage.setItem('mylist',JSON.stringify(arr))
             item.current.value='';
@@ -80,7 +80,7 @@ export default function TodoForm() {
                         </Row>
                         <Row>
                             <Col>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" className="mb-3">
                                Submit
                             </Button>
                             </Col>
